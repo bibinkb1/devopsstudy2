@@ -1,0 +1,20 @@
+A Quick note : Solution for avoid admin password while connecting to new WiFi for standard user
+
+create file new file : /var/lib/polkit-1/localauthority/50-local.d/10-network-manager.pkla with below content note: here in second line modify userame with the actual one
+ 
+touch /var/lib/polkit-1/localauthority/50-local.d/10-network-manager.pkla
+ 
+Add one or more policies...
+[Let standard Users modify system settings for network]
+Identity=unix-user:vvdn
+Action=org.freedesktop.NetworkManager.settings.modify.system
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+
+
+
+Experimental : Try this too 
+==========================
+Identity=unix-group:netdev
+===========================
